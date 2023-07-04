@@ -1,7 +1,13 @@
 from django.contrib import admin
+from mptt.admin import MPTTModelAdmin
 from .models import *
 
-admin.site.register(PlaceOfWork)
+@admin.register(PlaceOfWork)
+class CategoryAdmin(MPTTModelAdmin):
+    list_display = ('title', 'id')
+    mptt_level_indent = 20
+
+
 admin.site.register(Location)
 admin.site.register(DepartmentName)
 admin.site.register(Position)
